@@ -79,7 +79,9 @@ public class DashboardService {
 
     private DashboardDto createAndReturnDashboardDto(CourseExecution courseExecution, Student student) {
         Dashboard dashboard = new Dashboard(courseExecution, student);
+
         dashboardRepository.save(dashboard);
+
         return new DashboardDto(dashboard);
     }
 

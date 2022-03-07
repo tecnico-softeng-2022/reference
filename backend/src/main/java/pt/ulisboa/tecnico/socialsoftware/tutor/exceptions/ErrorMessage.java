@@ -59,7 +59,7 @@ public enum ErrorMessage {
     INVALID_LOGIN_CREDENTIALS("Invalid login credentials"),
 
     CANNOT_DELETE_COURSE_EXECUTION("The course execution cannot be deleted %s"),
-    
+
     QUESTION_KEY_ALREADY_EXISTS("Questions already exists with key %d"),
     QUESTION_OPTION_MISMATCH("Question %d does not have option %d"),
     QUESTION_ORDER_SLOT_MISMATCH("Question %d does not have slot %d"),
@@ -67,7 +67,7 @@ public enum ErrorMessage {
     DUPLICATE_TOPIC("Duplicate topic: %s"),
     DUPLICATE_USER("Duplicate user: %s"),
     DUPLICATE_COURSE_EXECUTION("Duplicate course execution: %s"),
-    
+
     USERS_IMPORT_ERROR("Error importing users: %s"),
     QUESTIONS_IMPORT_ERROR("Error importing questions: %s"),
     TOPICS_IMPORT_ERROR("Error importing topics: %s"),
@@ -146,16 +146,32 @@ public enum ErrorMessage {
 
     ACCESS_DENIED("You do not have permission to view this resource"),
     CANNOT_OPEN_FILE("Cannot open file"),
-    
+
     INVALID_CSV_FILE_FORMAT("The csv file uploaded has a wrong format"),
     WRONG_FORMAT_ON_CSV_LINE("Csv File has a wrong format on line: %d"),
-    
-    FRAUD_SERVICE_NOT_AVAILABLE("Fraud service not available"),
-    FRAUD_SERVICE_QUIZ_TYPE_NOT_SUPPORTED("Fraud service only supports timed, one way, in class quizzes");
 
-    
+    FRAUD_SERVICE_NOT_AVAILABLE("Fraud service not available"),
+    FRAUD_SERVICE_QUIZ_TYPE_NOT_SUPPORTED("Fraud service only supports timed, one way, in class quizzes"),
+
+    WEEKLY_SCORE_ALREADY_CREATED("Weekly Score already created for this week"),
+    WEEKLY_SCORE_NOT_FOUND("Weekly Score not found: %d"),
+    UPDATE_WEEKLY_SCORE_NOT_POSSIBLE("Impossible to update old Weekly Score: %s"),
+    CANNOT_REMOVE_WEEKLY_SCORE("Impossible to remove current Weekly Score"),
+
+    DIFFICULT_QUESTION_NOT_FOUND("Difficult question not found"),
+    DIFFICULT_QUESTION_ALREADY_CREATED("Difficult question already created"),
+    CANNOT_CREATE_DIFFICULT_QUESTION("Cannot create difficult question"),
+    CANNOT_REMOVE_DIFFICULT_QUESTION("Cannot remove difficult question"),
+
+    FAILED_ANSWER_NOT_FOUND("Failed answer not found"),
+    FAILED_ANSWER_MISSING_START_TIME("Failed answer filter requires the definition of the start date"),
+    FAILED_ANSWER_MISSING_END_TIME("Failed answer filter requires the definition of the end date"),
+    FAILED_ANSWER_ALREADY_CREATED("Failed answer already created"),
+    CANNOT_CREATE_FAILED_ANSWER("Cannot create failed answer"),
+    CANNOT_REMOVE_FAILED_ANSWER("Cannot remove failed answer");
+
     public final String label;
-    
+
     ErrorMessage(String label) {
         this.label = label;
     }
