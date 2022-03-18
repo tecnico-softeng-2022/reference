@@ -81,30 +81,23 @@ class FailedAnswersSpockTest extends SpockTest {
         questionAnswer.setTimeTaken(1)
         questionAnswer.setQuizAnswer(quizAnswer)
         questionAnswer.setQuizQuestion(question)
+        questionAnswerRepository.save(questionAnswer)
 
         def answerDetails
-        if (answered && correct) answerDetails = new MultipleChoiceAnswer(questionAnswer, optionRepository.findAll().get(0))
-        else if (answered && !correct ) answerDetails = new MultipleChoiceAnswer(questionAnswer, optionRepository.findAll().get(1))
+        if (answered && correct) answerDetails = new MultipleChoiceAnswer(questionAnswer, option)
+        else if (answered && !correct ) answerDetails = new MultipleChoiceAnswer(questionAnswer, optionKO)
         else {
             questionAnswerRepository.save(questionAnswer)
             return questionAnswer
         }
         questionAnswer.setAnswerDetails(answerDetails)
         answerDetailsRepository.save(answerDetails)
-        questionAnswerRepository.save(questionAnswer)
         return questionAnswer
     }
 
     def createFailedAnswer(questionAnswer, collected) {
-        def failedAnswer = new FailedAnswer()
-        failedAnswer.setQuestionAnswer(questionAnswer)
-        failedAnswer.setAnswered(questionAnswer.isAnswered())
-        failedAnswer.setCollected(collected)
-        failedAnswer.setDashboard(dashboard)
-        SameQuestion sameQuestion = new SameQuestion(failedAnswer);
-        failedAnswer.setSameQuestion(sameQuestion);
+        def failedAnswer = new FailedAnswer(dashboard, questionAnswer, collected)
         failedAnswerRepository.save(failedAnswer)
-
         return failedAnswer
     }
 }
